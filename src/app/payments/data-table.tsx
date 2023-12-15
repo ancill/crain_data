@@ -20,7 +20,6 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
 import {
@@ -31,6 +30,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -78,11 +79,24 @@ export function DataTable<TData, TValue>({
         />
       </div>
       <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline" className="ml-auto">
-            Columns
-          </Button>
-        </DropdownMenuTrigger>
+      <div className="flex items-center justify-start space-x-2 py-4">
+  <Button
+    variant="outline"
+    size="sm"
+    onClick={() => table.previousPage()}
+    className="shadow-md bg-red-800 text-white flex items-center"
+  >
+    <ArrowLeft className="mr-2" /> PREV 20
+  </Button>
+  <Button
+    variant="outline"
+    size="sm"
+    onClick={() => table.nextPage()}
+    className="shadow-md bg-red-800 text-white flex items-center"
+  >
+    NEXT 20 <ArrowRight className="ml-2" />
+  </Button>
+</div>
         <DropdownMenuContent
           align="end"
           className="bg-background text-gray-600"
@@ -151,26 +165,6 @@ export function DataTable<TData, TValue>({
   )}
 </TableBody>
         </Table>
-      </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-          className="shadow-md"
-        >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-          className="shadow-md"
-        >
-          Next
-        </Button>
       </div>
     </div>
   );
