@@ -49,7 +49,7 @@ export default async function DemoPage() {
         <h3 className="font-heading border-b-[1px] border-red-700 text-3xl font-semibold leading-[1.1] text-black sm:text-3xl md:text-2xl">
           Welcome to Crain's Data Center
         </h3>
-        <p className="text-muted-foreground max-w-[85%] leading-normal sm:text-lg sm:leading-7">
+        <p className="text-muted-foreground leading-normal sm:text-lg sm:leading-7">
           Crain's Data Members have exclusive access to the data collected by
           Crain's Chicago Business to find potential clients and conduct market
           research. We've compiled everything you need to know about the
@@ -59,22 +59,28 @@ export default async function DemoPage() {
           become a Data Member, click here. To become a Data Member, click here.
         </p>
 
-        <div className="ju flex">
-          <ul className="stats-items">
-            <li className="stats-items-content" ldl-stat-count="1100">
-              <h2 className="text-4xl">1,100</h2>
-              <span className="text-2xl">Companies</span>
-            </li>
-            <li className="stats-items-content" ldl-stat-count="5031">
-              <h2 ldl-count-up="5031">5,031</h2>
-              <span className="stats-items-value">People</span>
-            </li>
-            <li className="stats-items-content" ldl-stat-count="48">
-              <h2 ldl-count-up="48">48</h2>
-              <span className="stats-items-value">Industry Lists</span>
-            </li>
-          </ul>
-        </div>
+        <ul className="stats-items flex w-full justify-around gap-4">
+          <li className="stats-items-content" ldl-stat-count="1100">
+            <h2 className="text-4xl font-bold">1,100</h2>
+            <span className="text-2xl font-normal">Companies</span>
+          </li>
+          <li className="stats-items-content" ldl-stat-count="5031">
+            <h2 className="text-4xl font-bold">5,031</h2>
+            <span className="text-2xl">People</span>
+          </li>
+          <li className="stats-items-content" ldl-stat-count="48">
+            <h2 className="text-4xl font-bold">48</h2>
+            <span className="text-2xl">Industry Lists</span>
+          </li>
+        </ul>
+        <p className="text-muted-foreground leading-normal sm:text-lg sm:leading-7">
+          Filter and export customized lists from Crain's database using the
+          following filter options. For example you could export a list of all
+          public companies, or you could export a list of CFOs at privately held
+          manufacturing companies with more than 1,000 employees and $100
+          million+ in annual revenue. For a video tutorial on how to use the
+          custom list functionality, click here.
+        </p>
       </div>
 
       <DataTable columns={columns} data={data} />
