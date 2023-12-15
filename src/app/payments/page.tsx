@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { type Payment, columns } from "./columns";
 import { DataTable } from "./data-table";
+import Filters from "./filters";
 
 async function getData(): Promise<Payment[]> {
   // nextjs 13 fetching api from our api folder/payments
@@ -89,7 +90,7 @@ export default async function DemoPage() {
           custom list functionality, click here.
         </p>
       </div>
-
+      <Filters />
       <DataTable columns={columns} data={data} />
     </section>
   );
