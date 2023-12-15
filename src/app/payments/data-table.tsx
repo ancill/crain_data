@@ -30,8 +30,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ArrowLeft, ArrowRight } from 'lucide-react';
-
+import { Paywall } from "./paywall";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -67,7 +67,8 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div>
+    <div className="relative">
+      <Paywall />
       <div className="flex items-center py-5">
         <Input
           placeholder="Filter names..."
@@ -79,24 +80,24 @@ export function DataTable<TData, TValue>({
         />
       </div>
       <DropdownMenu>
-      <div className="flex items-center justify-start space-x-2 py-4">
-  <Button
-    variant="outline"
-    size="sm"
-    onClick={() => table.previousPage()}
-    className="shadow-md bg-red-800 text-white flex items-center"
-  >
-    <ArrowLeft className="mr-2" /> PREV 20
-  </Button>
-  <Button
-    variant="outline"
-    size="sm"
-    onClick={() => table.nextPage()}
-    className="shadow-md bg-red-800 text-white flex items-center"
-  >
-    NEXT 20 <ArrowRight className="ml-2" />
-  </Button>
-</div>
+        <div className="flex items-center justify-start space-x-2 py-4">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.previousPage()}
+            className="flex items-center bg-red-800 text-white shadow-md"
+          >
+            <ArrowLeft className="mr-2" /> PREV 20
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.nextPage()}
+            className="flex items-center bg-red-800 text-white shadow-md"
+          >
+            NEXT 20 <ArrowRight className="ml-2" />
+          </Button>
+        </div>
         <DropdownMenuContent
           align="end"
           className="bg-background text-gray-600"
@@ -139,31 +140,34 @@ export function DataTable<TData, TValue>({
             ))}
           </TableHeader>
           <TableBody>
-  {table.getRowModel().rows.length ? (
-    table.getRowModel().rows.map((row, index) => (
-      <TableRow
-        key={row.id}
-        data-state={row.getIsSelected() ? "selected" : undefined}
-        className={index % 2 === 0 ? 'bg-gray-200' : undefined} // Alternating row color
-      >
-        {row.getVisibleCells().map((cell) => (
-          <TableCell key={cell.id}>
-            {flexRender(cell.column.columnDef.cell, cell.getContext())}
-          </TableCell>
-        ))}
-      </TableRow>
-    ))
-  ) : (
-    <TableRow>
-      <TableCell
-        colSpan={columns.length}
-        className="h-24 text-center"
-      >
-        No results.
-      </TableCell>
-    </TableRow>
-  )}
-</TableBody>
+            {table.getRowModel().rows.length ? (
+              table.getRowModel().rows.map((row, index) => (
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() ? "selected" : undefined}
+                  className={index % 2 === 0 ? "bg-gray-200" : undefined} // Alternating row color
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
+                  No results.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
         </Table>
       </div>
     </div>

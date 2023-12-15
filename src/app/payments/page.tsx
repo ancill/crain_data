@@ -2,6 +2,7 @@ import Image from "next/image";
 import { type Payment, columns } from "./columns";
 import { DataTable } from "./data-table";
 import Filters from "./filters";
+import { Paywall } from "./paywall";
 
 async function getData(): Promise<Payment[]> {
   // nextjs 13 fetching api from our api folder/payments
@@ -23,7 +24,6 @@ async function getData(): Promise<Payment[]> {
       orgUrl: "misumiusa.com",
       name: "Bill Abbott",
       title: "VP, General Counsel",
-
     },
     {
       id: "728ed52d",
@@ -154,6 +154,7 @@ export default async function DemoPage() {
         </p>
       </div>
       <Filters />
+
       <DataTable columns={columns} data={data} />
     </section>
   );
