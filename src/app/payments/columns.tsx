@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
@@ -16,30 +17,53 @@ import {
 export type Payment = {
   id: string;
   amount: string;
-  status: string;
+  orgName: string;
   employees: string;
   name: string;
+  title?: string;
+  orgUrl?: string;
 };
 
 export const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: "name",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Executive
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        Executive
+        <ArrowUpDown className="ml-2 h-4 w-4" />
+      </Button>
+    ),
+    cell: ({ row }) => (
+      <>
+        <div className="font-semibold">{row.original.name}</div>
+        <div className="text-sm text-gray-600">{row.original.title}</div>
+      </>
+    ),
   },
   {
-    accessorKey: "status",
+    accessorKey: "orgName",
     header: "Organization name",
+    cell: ({ row }) => (
+      <>
+        <div>{row.original.orgName}</div>
+        {row.original.orgUrl && (
+          <a 
+            href={row.original.orgUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-blue-600 hover:text-blue-800 visited:text-purple-600"
+          >
+            {row.original.orgUrl}
+          </a>
+        )}
+      </>
+    ),
   },
+  
+  
   {
     accessorKey: "amount",
     header: "Revenue",

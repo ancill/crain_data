@@ -9,22 +9,29 @@ async function getData(): Promise<Payment[]> {
       id: "728ed52s",
       amount: "$21.2 bil.",
       employees: "5,836",
-      status: "Medine Industries",
+      orgName: "Medine Industries",
+      orgUrl: "Medine.com",
       name: "Tim Abata",
+      title: "Chief Marketing Officer",
     },
     {
       id: "728ed52f",
       amount: "",
       employees: "",
-      status: "MISUMI",
+      orgName: "MISUMI",
+      orgUrl: "misumiusa.com",
       name: "Bill Abbott",
+      title: "VP, General Counsel",
+
     },
     {
       id: "728ed52d",
       amount: "$1.36 bil.",
       employees: "602",
-      status: "Readerlink Distribution Services LLC",
+      orgName: "Readerlink Distribution Services LLC",
+      orgUrl: "ReaderLink.com",
       name: "Dennis E. Abboud Sr.",
+      title: "Chairman, president, CEO",
     },
   ];
 
