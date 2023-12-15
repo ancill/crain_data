@@ -125,33 +125,31 @@ export function DataTable<TData, TValue>({
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext(),
-                      )}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
+  {table.getRowModel().rows.length ? (
+    table.getRowModel().rows.map((row, index) => (
+      <TableRow
+        key={row.id}
+        data-state={row.getIsSelected() ? "selected" : undefined}
+        className={index % 2 === 0 ? 'bg-gray-200' : undefined} // Alternating row color
+      >
+        {row.getVisibleCells().map((cell) => (
+          <TableCell key={cell.id}>
+            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+          </TableCell>
+        ))}
+      </TableRow>
+    ))
+  ) : (
+    <TableRow>
+      <TableCell
+        colSpan={columns.length}
+        className="h-24 text-center"
+      >
+        No results.
+      </TableCell>
+    </TableRow>
+  )}
+</TableBody>
         </Table>
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
