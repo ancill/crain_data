@@ -6,27 +6,24 @@ async function getData(): Promise<Payment[]> {
   const payments: Payment[] = [
     {
       id: "728ed52s",
-      amount: 200,
-      status: "succesful",
-      email: "mejiabrayan@protonmail..com",
+      amount: "$21.2 bil.",
+      employees: "5,836",
+      status: "Medine Industries",
+      name: "Tim Abata",
     },
     {
       id: "728ed52f",
-      amount: 300,
-      status: "pending",
-      email: "kevinf@example.com",
+      amount: "",
+      employees: "",
+      status: "MISUMI",
+      name: "Bill Abbott",
     },
     {
       id: "728ed52d",
-      amount: 450,
-      status: "success",
-      email: "johndoe@example.com",
-    },
-    {
-      id: "728ed52v",
-      amount: 100,
-      status: "failed",
-      email: "ianjones@example.com",
+      amount: "$1.36 bil.",
+      employees: "602",
+      status: "Readerlink Distribution Services LLC",
+      name: "Dennis E. Abboud Sr.",
     },
   ];
 
