@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 "use client";
 
-import { ColumnDef } from "@tanstack/react-table";
+import { type ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal, ArrowUpDown } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -50,11 +50,11 @@ export const columns: ColumnDef<Payment>[] = [
       <>
         <div>{row.original.orgName}</div>
         {row.original.orgUrl && (
-          <a 
-            href={row.original.orgUrl} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="text-blue-600 hover:text-blue-800 visited:text-purple-600"
+          <a
+            href={row.original.orgUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 visited:text-purple-600 hover:text-blue-800"
           >
             {row.original.orgUrl}
           </a>
@@ -62,8 +62,7 @@ export const columns: ColumnDef<Payment>[] = [
       </>
     ),
   },
-  
-  
+
   {
     accessorKey: "amount",
     header: "Revenue",

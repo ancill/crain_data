@@ -2,7 +2,6 @@ import Image from "next/image";
 import { type Payment, columns } from "./columns";
 import { DataTable } from "./data-table";
 import Filters from "./filters";
-import { Paywall } from "./paywall";
 
 async function getData(): Promise<Payment[]> {
   // nextjs 13 fetching api from our api folder/payments
